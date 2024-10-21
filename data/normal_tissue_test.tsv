@@ -1,0 +1,5 @@
+Gene	Gene name	Tissue	Cell type	Level	Reliability
+ENSG00000000003	TSPAN6	adipose tissue	adipocytes	Not detected	Approved
+ENSG00000000003	TSPAN6	vagina	squamous epithelial cells	High	Approved
+ENSG00000000005	TNMD	N/A	N/A	N/A	Uncertain
+ENSG00000000419	DPM1	adipose tissue	adipocytes	Medium	Approved

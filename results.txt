@@ -1,0 +1,3 @@
+Number of distinct genes: 3
+Distinct genes: ['ENSG00000000003', 'ENSG00000000005', 'ENSG00000000419']
+Tissues for TSPAN6: ['adipose tissue', 'vagina']
