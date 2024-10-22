@@ -1,4 +1,4 @@
-from hpa.tools import Analyzer  # type: ignore
+from hpa.tools import Analyzer
 
 test_file_path = "./tests/data/normal_tissue_test.tsv"
 
