@@ -13,8 +13,6 @@ The project uses a `.tsv` file containing data about genes, tissues, cell types,
 - **Gene Search**: Retrieve all tissues associated with a specific gene.
 - **Data Loading**: Efficiently loads and parses the Human Protein Atlas `.tsv` files.
 
-## Visuals
--
 
 ## Installation
 1. Clone the HPA repository in a new window 
@@ -23,7 +21,57 @@ The project uses a `.tsv` file containing data about genes, tissues, cell types,
 4. Install packages/dependencies (pytest)
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+
+1. **Gene Expression Data**
+The input data is a TSV file containing columns:
+
+Gene: A unique gene identifier (e.g., ENSG00000000003).
+Gene name: The name of the gene (e.g., TSPAN6).
+Tissue: The type of tissue where the gene is expressed (e.g., adipose tissue).
+Cell type: The type of cells where the gene is expressed (e.g., adipocytes).
+Level: The expression level (e.g., High, Medium, Not detected).
+Reliability: The reliability of the data (e.g., Approved, Uncertain)
+
+2. **tools.py - Analyzer Class**
+The Analyzer class is designed to process and analyze gene expression data from a TSV file. Here's a breakdown of the components:
+
+*Attributes:*
+url_or_path: The file path or URL of the TSV file.
+data: A list of dictionaries, each dictionary representing a row in the TSV file. The dictionary keys are the column names from the file.
+
+*Methods:*
+__init__(self, url_or_path: str): Initializes the class by taking the file path and loads the data.
+
+load_data(self) -> List[Dict[str, str]]: Reads the TSV file using the csv.DictReader and stores each row as a dictionary. This allows easy access to each column by its name.
+
+get_number_of_genes(self) -> int: Returns the number of distinct genes present in the dataset.
+
+get_distinct_genes(self) -> List[str]: Returns a sorted list of distinct gene identifiers from the data.
+
+get_tissues_by_gene_name(self, gene_name: str) -> List[str]: For a given gene name, it returns a sorted list of distinct tissues where the gene is expressed.
+
+3. **test_software.py - Unit Tests**
+This file contains unit tests to ensure the Analyzer class methods work as expected.
+
+test_number_of_genes(): Tests if the get_number_of_genes() method returns the correct number of distinct genes. The expected result in the test is 3.
+
+test_distinct_genes(): Tests if the get_distinct_genes() method returns a list of all distinct genes correctly. The expected distinct genes in this case are ["ENSG00000000003", "ENSG00000000005", "ENSG00000000419"].
+
+test_tissues_by_gene_name(): Tests if get_tissues_by_gene_name("TSPAN6") returns the expected list of tissues, which should be ["adipose tissue", "vagina"].
+
+Run the test using pytest tests/test_software.py
+
+
+4. **Results Code (Script)**
+The script processes the data and writes the results to a file results.txt.
+
+num_genes: Stores the number of distinct genes found by calling get_number_of_genes().
+
+distinct_genes: Stores the list of distinct gene identifiers found by calling get_distinct_genes().
+
+tissues: Stores the list of tissues where the gene TSPAN6 is expressed by calling get_tissues_by_gene_name("TSPAN6").
+
+Output: All results are written to a file results.txt for later inspection.
 
 ## Support
 For help or issues, please open an issue in the repository or reach out via email at s22sfati@uni-bonn.de.
@@ -48,8 +96,6 @@ hpa: The main Python package for the project, including the Analyzer class in to
 tests: Contains unit tests for the Analyzer class in test_software.py.
 venv: The virtual environment directory, which includes the Python interpreter, libraries, and scripts.
 
-## Contributing
--
 
 ## Authors and acknowledgment
 Samana Fatima
@@ -58,4 +104,4 @@ Samana Fatima
 This project is currently unlicensed.
 
 ## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Completed
