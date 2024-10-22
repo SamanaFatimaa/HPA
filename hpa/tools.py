@@ -14,7 +14,7 @@ class Analyzer:
         as a dictionary with keys corresponding to the column names.
     """
      
-    def __init__(self, path: str):
+    def __init__(self, url_or_path: str):
         """
         Initialize the Analyzer with the given file path and load the data.
 
@@ -24,7 +24,7 @@ class Analyzer:
             The path to the TSV file containing gene expression data.
         """
         
-        self.path = path
+        self.url_or_path = url_or_path
         self.data = self.load_data()
 
     def load_data(self) -> List[Dict[str, str]]:
@@ -37,7 +37,7 @@ class Analyzer:
             A list of dictionaries where each dictionary corresponds to a row in the
             TSV file, with column names as keys and the respective values.
         """
-        with open(self.path, 'r', newline='', encoding='utf-8') as file:
+        with open(self.url_or_path, 'r', newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file, delimiter='\t') 
             return list(reader)
 

@@ -1,6 +1,6 @@
 from hpa.tools import Analyzer
 
-analyzer = Analyzer(path="./data/normal_tissue_test.tsv")
+analyzer = Analyzer(url_or_path="./data/normal_tissue_test.tsv")
 
 with open("results.txt", "w") as f:
     num_genes = analyzer.get_number_of_genes()
