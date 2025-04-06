@@ -1,6 +1,6 @@
 from hpa.tools import Analyzer
 
-test_file_path = "./tests/data/normal_tissue_test.tsv"
+test_file_path = r"C:\Users\saman\workspace\hpa\data\normal_tissue_test.tsv"
 
 
 def test_number_of_genes():
